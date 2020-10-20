@@ -165,11 +165,11 @@ client.connect(err => {
             })
     })
 
-});
+})
 
 app.get('/', (req, res) => {
-    res.send('Database is working!!!');
-})
+    res.send('Database is working!!!')
+});
 
 
 app.listen(process.env.Port || port)
