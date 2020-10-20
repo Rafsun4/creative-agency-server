@@ -24,7 +24,6 @@ client.connect(err => {
     const reviewCollection = client.db("creative-agency").collection("reviews");
     const adminCollection = client.db("creative-agency").collection("admin");
     const serviceCollection = client.db("creative-agency").collection("serviceList");
-    console.log("db connected");
 
     //Add Order by Client
     app.post('/placeOrder', (req, res) => {
@@ -62,7 +61,7 @@ client.connect(err => {
     //Show Orders to client's order page
     app.get('/orders', (req, res) => {
         const email = req.body.email;
-        orderDetailsCollection.find({ email: req.query.email })
+        orderDetailsCollection.find({ email: email })
             .toArray((err, documents) => {
                 res.send(documents);
             })
@@ -169,7 +168,7 @@ client.connect(err => {
 
 app.get('/', (req, res) => {
     res.send('Database is working!!!')
-});
+})
 
 
 app.listen(process.env.Port || port)
